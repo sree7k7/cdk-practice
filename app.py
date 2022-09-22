@@ -2,6 +2,7 @@
 import os
 
 import aws_cdk as cdk
+# import aws_cdk as core
 
 from my_first_cdk_project.my_first_cdk_project_stack import MyFirstCdkProjectStack
 
