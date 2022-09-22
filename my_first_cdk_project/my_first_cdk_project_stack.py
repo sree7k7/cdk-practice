@@ -33,7 +33,6 @@ class MyFirstCdkProjectStack(Stack):
             bucket_name="mysecondcdkbucketbysri",
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
             auto_delete_objects=True,
-            # removal_policy=s3._RemovalPolicy_9f93c814
             removal_policy=RemovalPolicy.DESTROY
 
         )
