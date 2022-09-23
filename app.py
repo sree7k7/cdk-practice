@@ -6,8 +6,8 @@ import aws_cdk as cdk
 
 from my_first_cdk_project.my_first_cdk_project_stack import MyArtifactStack
 
-env_US = cdk.Environment(account='530476024200', region="us-east-1")
-env_EU = cdk.Environment(account='760663772494', region="eu-central-1")
+env_US = cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region="us-east-1")
+env_EU = cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region="eu-central-1")
 app = cdk.App()
 MyArtifactStack(app, "myDevStack", env=env_US
 # MyArtifactStack(app, "myDevStack", env=env_US
