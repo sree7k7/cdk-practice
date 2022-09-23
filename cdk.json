@@ -1,7 +1,7 @@
 {
   "app": "python3 app.py",
   "versionReporting": false,
-  
+
   "watch": {
     "include": [
       "**"
@@ -17,6 +17,14 @@
     ]
   },
   "context": {
+    "dev":{
+      "region": "us-east-1",
+      "account": "530476024200"
+    },
+  "prod": {
+    "region":"eu-central-1",
+    "account":"760663772494"
+  },
     "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
     "@aws-cdk/core:stackRelativeExports": true,
     "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,

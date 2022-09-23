@@ -12,6 +12,7 @@ from aws_cdk import (
 from constructs import Construct
 import aws_cdk.aws_ec2 as ec2
 import aws_cdk as core
+from .parameters import bucketName
 
 
 
@@ -21,8 +22,8 @@ class MyArtifactStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         # The code that defines your stack goes here
-        bucket_name = CfnParameter(self, "uploadBucketName", type="String",
-           description="The name of the Amazon S3 bucket where uploaded files will be stored.")
+        # bucket_name = CfnParameter(self, "uploadBucketName", type="String",
+        #    description="The name of the Amazon S3 bucket where uploaded files will be stored.")
 
         if is_prod:
             artifactBucket = s3.Bucket(
@@ -32,7 +33,7 @@ class MyArtifactStack(Stack):
                 encryption=s3.BucketEncryption.S3_MANAGED,
                 block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
                 removal_policy=RemovalPolicy.DESTROY,
-                bucket_name=bucket_name.value_as_string
+                bucket_name=bucketName
             )
         else:
             artifactBucket = s3.Bucket(
