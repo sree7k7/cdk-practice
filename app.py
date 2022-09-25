@@ -5,11 +5,12 @@ import aws_cdk as cdk
 # import aws_cdk as core
 
 from my_first_cdk_project.my_first_cdk_project_stack import MyArtifactStack
+from resource_stack.vpc import CustomVpcStack
 
-env_US = cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region="us-east-1")
-env_EU = cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region="eu-central-1")
+# env_US = cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region="us-east-1")
+# env_EU = cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region="eu-central-1")
 app = cdk.App()
-MyArtifactStack(app, "myDevStack", env=env_US
+# MyArtifactStack(app, "myDevStack", env=env_US
 # MyArtifactStack(app, "myDevStack", env=env_US
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
@@ -26,7 +27,9 @@ MyArtifactStack(app, "myDevStack", env=env_US
     # env=cdk.Environment(account='123456789012', region='us-east-1'),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
-MyArtifactStack(app, "myProdStack", is_prod=True, env=env_EU)
+    # )
+# MyArtifactStack(app, "myProdStack", is_prod=True, env=env_EU)
+MyArtifactStack(app, "myProdStack")
+CustomVpcStack(app, "VPC")
 
 app.synth()
