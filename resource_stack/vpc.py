@@ -1,10 +1,12 @@
 
-from aws_cdk import Stack, aws_ec2 as _ec2, aws_iam as iam
-from constructs import Construct
-from my_first_cdk_project.parameters import cidr_mask, vpc_cidr
 import aws_cdk as cdk
 import aws_cdk as core
-
+from aws_cdk import RemovalPolicy, Stack
+from aws_cdk import aws_ec2 as _ec2
+from aws_cdk import aws_iam as iam
+from aws_cdk import aws_s3 as s3
+from constructs import Construct
+from my_first_cdk_project.parameters import cidr_mask, vpc_cidr
 
 
 class CustomVpcStack(Stack):
@@ -38,6 +40,23 @@ class CustomVpcStack(Stack):
             ]
         )
         cdk.Tags.of(custom_vpc).add("Environmentx", "Dev")
+
+        mybucket = s3.Bucket(
+            self,
+            "mybucket",
+            bucket_name = "testsri0432x",
+            access_control = s3.BucketAccessControl.PRIVATE,
+            encryption = s3.BucketEncryption.S3_MANAGED,
+            versioned = False,
+            block_public_access = s3.BlockPublicAccess.BLOCK_ALL,
+            removal_policy=RemovalPolicy.DESTROY
+        )
+        cdk.Tags.of(mybucket).add("bucket", "Devbucket")
+
+
+
+
+
         
 
         # role = iam.Role(

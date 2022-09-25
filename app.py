@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
+from multiprocessing.sharedctypes import Value
 import os
 
 import aws_cdk as cdk
-# import aws_cdk as core
+import aws_cdk as core
 
 from my_first_cdk_project.my_first_cdk_project_stack import MyArtifactStack
 from resource_stack.vpc import CustomVpcStack
@@ -30,6 +31,7 @@ app = cdk.App()
     # )
 # MyArtifactStack(app, "myProdStack", is_prod=True, env=env_EU)
 MyArtifactStack(app, "myProdStack")
-CustomVpcStack(app, "VPC")
+CustomVpcStack(app, "VPC")        
+cdk.Tags.of(app).add("stacklevelkey", "stacklevelvalue")
 
 app.synth()
