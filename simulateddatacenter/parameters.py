@@ -11,8 +11,5 @@ set_resource = TRUE
 
 #EC2
 instance_type = "t3.micro"
+CloudVPCCIDR = "10.4.0.0/24"
 
-#VPN config
-targetOneIpAddress = "10.2.0.84"
-targetTwoIpAddress = "10.2.0.83"
-CustomerGatewayIP = "3.70.235.142"
